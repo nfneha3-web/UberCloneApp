@@ -1,0 +1,137 @@
+:root {
+  --rs-primary: #1f6feb;
+  --rs-primary-dark: #1552b0;
+  --rs-success: #2f9e5b;
+  --rs-warning: #f5a623;
+  --rs-danger: #d64545;
+  --rs-surface: #ffffff;
+  --rs-bg: #f7f8fa;
+  --rs-bg-subtle: #f2f4f7;
+  --rs-border: #e4e7ec;
+  --rs-text: #1d2939;
+  --rs-text-muted: #667085;
+  --rs-radius: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  background: var(--rs-bg);
+  color: var(--rs-text);
+}
+
+.page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+button {
+  font-family: inherit;
+}
+
+.card {
+  background: var(--rs-surface);
+  border: 1px solid var(--rs-border);
+  border-radius: var(--rs-radius);
+  padding: 1.25rem;
+}
+
+.btn-primary {
+  background: var(--rs-primary);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.65rem 1.1rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.btn-primary:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--rs-text);
+  border: 1px solid var(--rs-border);
+  border-radius: 10px;
+  padding: 0.6rem 1.05rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.btn-danger {
+  background: var(--rs-danger);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.6rem 1.05rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 0.9rem;
+}
+
+.form-field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--rs-text-muted);
+}
+
+.form-field input,
+.form-field select {
+  border: 1px solid var(--rs-border);
+  border-radius: 8px;
+  padding: 0.55rem 0.7rem;
+  font-size: 0.95rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--rs-bg-subtle);
+  color: var(--rs-text-muted);
+}
+
+.badge.status-InProgress,
+.badge.status-DriverAssigned,
+.badge.status-DriverArriving {
+  background: #e6f0ff;
+  color: var(--rs-primary);
+}
+
+.badge.status-Completed {
+  background: #e6f6ec;
+  color: var(--rs-success);
+}
+
+.badge.status-Cancelled {
+  background: #fdecec;
+  color: var(--rs-danger);
+}
