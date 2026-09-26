@@ -75,6 +75,8 @@ stages:
     jobs:
       - job: BuildFrontend
         displayName: 'Build and deploy to Static Web App'
+        pool:
+          vmImage: 'ubuntu-latest'   # AzureStaticWebApp@0 uses a Linux-only Docker image internally — must not run on windows-latest
         steps:
           - task: NodeTool@0
             displayName: 'Install Node.js'
