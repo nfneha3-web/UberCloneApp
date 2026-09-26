@@ -8,8 +8,8 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  azureSubscription: 'rideshare-azure-connection'
-  appServiceName: '<YOUR-APP-SERVICE-NAME>'   # e.g. rideshare-api-nfneha3 — replace with the exact name you gave it in Phase 2a
+  azureSubscription: 'ServiceCon1'
+  appServiceName: 'rideshare-api'
   apiProjectPath: 'backend/src/Presentation/RideShare.Api/RideShare.Api.csproj'
   solutionPath: 'backend/RideShare.sln'
 
