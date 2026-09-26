@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, effect, input, output, viewChild } from '@angular/core';
 import * as L from 'leaflet';
+import { CARTO_API_KEY } from '../../../core/config/app-config';
 
 export interface MapMarker {
   id: string;
@@ -35,7 +36,7 @@ const COLOR_ICON: Record<MapMarker['color'], L.Icon> = {
   })
 };
 
-/** Free, no-API-key map (OpenStreetMap tiles via Leaflet) — click to pick a point, or just display markers. */
+/** Free map (CARTO basemap tiles via Leaflet — raw OpenStreetMap tiles block cloud-hosted traffic) — click to pick a point, or just display markers. */
 @Component({
   selector: 'app-map',
   standalone: true,
@@ -71,8 +72,8 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.map = L.map(this.mapHost().nativeElement).setView([this.center().lat, this.center().lng], this.zoom());
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors',
+    L.tileLayer(`https://basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key=${CARTO_API_KEY}`, {
+      attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
       maxZoom: 19
     }).addTo(this.map);
 

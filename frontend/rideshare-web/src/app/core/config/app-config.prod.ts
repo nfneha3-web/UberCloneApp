@@ -5,3 +5,4 @@
 export const API_BASE_URL = 'https://rideshare-api-dnf7brb9d9bqa6hz.centralus-01.azurewebsites.net/api';
 export const HUB_BASE_URL = 'https://rideshare-api-dnf7brb9d9bqa6hz.centralus-01.azurewebsites.net/hubs/ride';
 export const STRIPE_PUBLISHABLE_KEY = 'pk_test_replace_with_your_stripe_test_publishable_key';
+export const CARTO_API_KEY = 'cb1_3zcn_1_64892ba3af1b9c7fce8a3d07';
