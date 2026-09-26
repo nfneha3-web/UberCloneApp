@@ -69,11 +69,12 @@ var app = builder.Build();
 // ---- HTTP pipeline ----
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// Swagger stays on in every environment, including the deployed Azure App Service (which runs
+// Production by default) — it only documents the API surface, nothing sensitive, and it's the
+// easiest way to confirm a deployment actually came up. Verbose error pages are a separate,
+// environment-gated concern (see ExceptionHandlingMiddleware) and stay off in Production.
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseForwardedHeaders(new ForwardedHeadersOptions
 {
