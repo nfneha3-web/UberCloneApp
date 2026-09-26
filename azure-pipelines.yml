@@ -69,3 +69,28 @@ stages:
                     appType: 'webApp'
                     appName: '$(appServiceName)'
                     package: '$(Pipeline.Workspace)/api-drop'
+
+  - stage: DeployFrontend
+    displayName: 'Build and deploy Angular frontend'
+    jobs:
+      - job: BuildFrontend
+        displayName: 'Build and deploy to Static Web App'
+        steps:
+          - task: NodeTool@0
+            displayName: 'Install Node.js'
+            inputs:
+              versionSpec: '20.x'
+
+          - script: npm ci
+            workingDirectory: frontend/rideshare-web
+            displayName: 'npm ci'
+
+          - script: npm run build -- --configuration production
+            workingDirectory: frontend/rideshare-web
+            displayName: 'Build Angular (production)'
+
+          - task: AzureStaticWebApp@0
+            inputs:
+              app_location: 'frontend/rideshare-web/dist/rideshare-web/browser'
+              skip_app_build: true
+              azure_static_web_apps_api_token: '$(SwaDeploymentToken)'
